@@ -3,9 +3,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Update Controls</title>
+    <title>Q.E.D. Framework</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Update Controls dependency tracking and UI framework">
+    <meta name="description" content="Q.E.D. MVVM dependency tracking and UI framework">
     <meta name="author" content="Michael L Perry">
 
     <!-- Le styles -->
@@ -39,19 +39,19 @@
 
       <!-- Jumbotron -->
       <div class="jumbotron">
-        <h1>Update Controls</h1>
-        <p class="lead">MVVM for dependent properties</p>
-        <a class="btn btn-large btn-success" href="#">Download</a>
+        <h1>Q.E.D. Framework</h1>
+        <p class="lead">MVVM for with formulas, not events</p>
+        <a class="btn btn-large btn-success" href="#">Install Package</a>
       </div>
 
       <hr>
 
       <div class="row-fluid">
           <div class="span12">
-            <p>All MVVM frameworks fire PropertyChanged events when you set a property. But what about the other properites affected by the change?
+            <p>All MVVM frameworks fire PropertyChanged events when you set a property. But what about the other properties affected by the change?
             Do you have calls to <strong>RaisePropertyChaged</strong> in your code? You don't need to.</p>
-            <p>Update Controls discovers dependencies within your code <strong>automatically</strong>. It will raise property changed events for you
-            when a dependent property is affected.</p>
+            <p>The Q.E.D. Framework discovers dependencies within your code <strong>automatically</strong>. Just write a formula for each property.
+			It will raise property changed events for you when the property is affected.</p>
           </div>
       </div>
 
@@ -95,13 +95,13 @@
   }
 }</pre>        </div>
         <div class="span4">
-          <h2>Update Controls</h2>
+          <h2>Q.E.D.</h2>
 <pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">PersonViewModel
 </span>{
-  <span style="color: blue">private </span><span style="color: #2b91af">Independent</span>&lt;<span style="color: blue">string</span>&gt; _first =
-    <span style="color: blue">new </span><span style="color: #2b91af">Independent</span>&lt;<span style="color: blue">string</span>&gt;();
-  <span style="color: blue">private </span><span style="color: #2b91af">Independent</span>&lt;<span style="color: blue">string</span>&gt; _last =
-    <span style="color: blue">new </span><span style="color: #2b91af">Independent</span>&lt;<span style="color: blue">string</span>&gt;();
+  <span style="color: blue">private </span><span style="color: #2b91af">Variable</span>&lt;<span style="color: blue">string</span>&gt; _first =
+    <span style="color: blue">new </span><span style="color: #2b91af">Variable</span>&lt;<span style="color: blue">string</span>&gt;();
+  <span style="color: blue">private </span><span style="color: #2b91af">Variable</span>&lt;<span style="color: blue">string</span>&gt; _last =
+    <span style="color: blue">new </span><span style="color: #2b91af">Variable</span>&lt;<span style="color: blue">string</span>&gt;();
 
   <span style="color: blue">public string </span>First
   {
@@ -134,7 +134,7 @@
 
     <div class="row-fluid">
         <div class="span12">
-            <p>Update Controls will even discover dependencies <strong>across object boundaries</strong>. You don't need to subscribe to events.</p>
+            <p>The Q.E.D. Framework will even discover dependencies <strong>across object boundaries</strong>. You don't need to subscribe to events.</p>
         </div>
     </div>
 
@@ -215,13 +215,13 @@
 </span></pre>
         </div>
         <div class="span6">
-            <h2>Update Controls</h2>
+            <h2>Q.E.D.</h2>
 <pre style="font-family:consolas;font-size:12"><span style="color:blue">public class </span><span style="color:#2b91af">PersonModel
 </span><span style="color:black">{
-  </span><span style="color:blue">private </span><span style="color:#2b91af">Independent</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt; _first =
-    </span><span style="color:blue">new </span><span style="color:#2b91af">Independent</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt;();
-  </span><span style="color:blue">private </span><span style="color:#2b91af">Independent</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt; _last =
-    </span><span style="color:blue">new </span><span style="color:#2b91af">Independent</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt;();
+  </span><span style="color:blue">private </span><span style="color:#2b91af">Variable</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt; _first =
+    </span><span style="color:blue">new </span><span style="color:#2b91af">Variable</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt;();
+  </span><span style="color:blue">private </span><span style="color:#2b91af">Variable</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt; _last =
+    </span><span style="color:blue">new </span><span style="color:#2b91af">Variable</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt;();
 
   </span><span style="color:blue">public string </span><span style="color:black">First
   {
