@@ -67,3 +67,11 @@ border-radius: 3px 0 0 3px;
 border-right: 0;
 border-radius: 0 3px 3px 0;
 }
+
+.logo {
+    width: 195px;
+    height: 294px;
+    background-image: url('Susie.png');
+    display: inline-block;
+    float: left;
+}

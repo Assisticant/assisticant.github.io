@@ -3,9 +3,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Q.E.D. Framework</title>
+    <title>Susie</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Q.E.D. MVVM dependency tracking and UI framework">
+    <meta name="description" content="Thoughtful, intelligent data binding">
     <meta name="author" content="Michael L Perry">
 
     <!-- Le styles -->
@@ -39,8 +39,10 @@
 
       <!-- Jumbotron -->
       <div class="jumbotron">
-        <h1>Q.E.D. Framework</h1>
-        <p class="lead">MVVM with formulas, not events</p>
+            <div class="logo">
+            </div>
+        <h1>Susie</h1>
+        <p class="lead">Thoughtful, intelligent data binding</p>
         <a class="btn btn-large btn-success" href="#">Install Package</a>
       </div>
 
@@ -48,10 +50,11 @@
 
       <div class="row-fluid">
           <div class="span12">
-            <p>All MVVM frameworks fire PropertyChanged events when you set a property. But what about the other properties affected by the change?
-            Do you have calls to <strong>RaisePropertyChaged</strong> in your code? You don't need to.</p>
-            <p>The Q.E.D. Framework discovers dependencies within your code <strong>automatically</strong>. Just write a formula for each property.
-			It will raise property changed events for you when the property is affected.</p>
+              <p>
+                  Your typical MVVM framework requires you to raise property changed events. Susie is more thoughtful.
+                  She figures out when the UI needs to be updated. You just write your code. She intelligently follows
+                  your logic and raises property changed and collection changed events exactly when she should.
+              </p>
           </div>
       </div>
 
@@ -95,7 +98,7 @@
   }
 }</pre>        </div>
         <div class="span4">
-          <h2>Q.E.D.</h2>
+          <h2>Susie</h2>
 <pre class="code"><span style="color: blue">public class </span><span style="color: #2b91af">PersonViewModel
 </span>{
   <span style="color: blue">private </span><span style="color: #2b91af">Variable</span>&lt;<span style="color: blue">string</span>&gt; _first =
@@ -134,7 +137,7 @@
 
     <div class="row-fluid">
         <div class="span12">
-            <p>The Q.E.D. Framework will even discover dependencies <strong>across object boundaries</strong>. You don't need to subscribe to events.</p>
+            <p>Susie will even discover dependencies <strong>across object boundaries</strong>. You don't need to subscribe to events.</p>
         </div>
     </div>
 
@@ -215,7 +218,7 @@
 </span></pre>
         </div>
         <div class="span6">
-            <h2>Q.E.D.</h2>
+            <h2>Susie</h2>
 <pre style="font-family:consolas;font-size:12"><span style="color:blue">public class </span><span style="color:#2b91af">PersonModel
 </span><span style="color:black">{
   </span><span style="color:blue">private </span><span style="color:#2b91af">Variable</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt; _first =
@@ -272,7 +275,7 @@
       <hr>
 
       <div class="footer">
-        <p>&copy; Michael L Perry 2013</p>
+        <p>&copy; Michael L Perry 2014</p>
       </div>
 
     </div> <!-- /container -->
