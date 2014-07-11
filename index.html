@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -181,6 +181,34 @@
   }
 }
 </span></pre>
+      </div>
+        <div class="span6">
+            <h2>Assisticant</h2>
+<pre style="font-family:consolas;font-size:12"><span style="color:blue">public class </span><span style="color:#2b91af">PersonModel
+</span><span style="color:black">{
+  </span><span style="color:blue">private </span><span style="color:#2b91af">Observable</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt; _first =
+    </span><span style="color:blue">new </span><span style="color:#2b91af">Observable</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt;();
+  </span><span style="color:blue">private </span><span style="color:#2b91af">Observable</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt; _last =
+    </span><span style="color:blue">new </span><span style="color:#2b91af">Observable</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt;();
+
+  </span><span style="color:blue">public string </span><span style="color:black">First
+  {
+    </span><span style="color:blue">get </span><span style="color:black">{ </span><span style="color:blue">return </span><span style="color:black">_first; }
+    </span><span style="color:blue">set </span><span style="color:black">{ _first.Value = </span><span style="color:blue">value</span><span style="color:black">; }
+  }
+
+  </span><span style="color:blue">public string </span><span style="color:black">Last
+  {
+    </span><span style="color:blue">get </span><span style="color:black">{ </span><span style="color:blue">return </span><span style="color:black">_last; }
+    </span><span style="color:blue">set </span><span style="color:black">{ _last.Value = </span><span style="color:blue">value</span><span style="color:black">; }
+  }
+}
+</span></pre>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+      <div class="span6">
 <pre style="font-family:consolas;font-size:12"><span style="color:blue">public class </span><span style="color:#2b91af">PersonViewModel </span><span style="color:black">: </span><span style="color:#2b91af">ViewModelBase
 </span><span style="color:black">{
   </span><span style="color:blue">private readonly </span><span style="color:#2b91af">PersonModel </span><span style="color:black">_person;
@@ -229,27 +257,6 @@
 </span></pre>
         </div>
         <div class="span6">
-            <h2>Assisticant</h2>
-<pre style="font-family:consolas;font-size:12"><span style="color:blue">public class </span><span style="color:#2b91af">PersonModel
-</span><span style="color:black">{
-  </span><span style="color:blue">private </span><span style="color:#2b91af">Observable</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt; _first =
-    </span><span style="color:blue">new </span><span style="color:#2b91af">Observable</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt;();
-  </span><span style="color:blue">private </span><span style="color:#2b91af">Observable</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt; _last =
-    </span><span style="color:blue">new </span><span style="color:#2b91af">Observable</span><span style="color:black">&lt;</span><span style="color:blue">string</span><span style="color:black">&gt;();
-
-  </span><span style="color:blue">public string </span><span style="color:black">First
-  {
-    </span><span style="color:blue">get </span><span style="color:black">{ </span><span style="color:blue">return </span><span style="color:black">_first; }
-    </span><span style="color:blue">set </span><span style="color:black">{ _first.Value = </span><span style="color:blue">value</span><span style="color:black">; }
-  }
-
-  </span><span style="color:blue">public string </span><span style="color:black">Last
-  {
-    </span><span style="color:blue">get </span><span style="color:black">{ </span><span style="color:blue">return </span><span style="color:black">_last; }
-    </span><span style="color:blue">set </span><span style="color:black">{ _last.Value = </span><span style="color:blue">value</span><span style="color:black">; }
-  }
-}
-</span></pre>
 <pre style="font-family:consolas;font-size:12"><span style="color:blue">public class </span><span style="color:#2b91af">PersonViewModel
 </span><span style="color:black">{
   </span><span style="color:blue">private readonly </span><span style="color:#2b91af">PersonModel </span><span style="color:black">_person;
@@ -291,6 +298,226 @@
           Because Assisticant can track dependencies across objects, you don&apos;t need to use a <strong>message bus</strong> to keep view models
           in sync with one another. Just move the shared state to an object that both view models depend upon.
         </p>
+      </div>
+    </div>
+
+    <div class="row-fluid">
+      <div class="span6">
+        <h2>Typical MVVM</h2>
+<pre><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PersonSelectorViewModel</span> : <span class="type">ViewModelBase</span>
+{
+  <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">Directory</span> _directory;
+  <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">List</span>&lt;<span class="type">PersonViewModel</span>&gt; _people;
+  <span class="keyword">private</span> <span class="type">PersonViewModel</span> _selectedPerson = <span class="keyword">null</span>;
+
+  <span class="keyword">public</span> PersonSelectorViewModel(
+    <span class="type">Directory</span> directory)
+  {
+    _directory = directory;
+
+    _people = _directory.GetPeople()
+      .Select(person =&gt; <span class="keyword">new</span> <span class="type">PersonViewModel</span>
+      {
+        Id = person.Id,
+        First = person.First,
+        Last = person.Last
+      })
+      .ToList();
+  }
+
+  <span class="keyword">public</span> <span class="type">IEnumerable</span>&lt;<span class="type">PersonViewModel</span>&gt; People
+  {
+    <span class="keyword">get</span> { <span class="keyword">return</span> _people; }
+  }
+
+  <span class="keyword">public</span> <span class="type">PersonViewModel</span> SelectedPerson
+  {
+    <span class="keyword">get</span> { <span class="keyword">return</span> _selectedPerson; }
+    <span class="keyword">set</span>
+    {
+      <span class="keyword">if</span> (_selectedPerson == value)
+        <span class="keyword">return</span>;
+
+      _selectedPerson = value;
+      RaisePropertyChanged(() =&gt; <span class="keyword">this</span>.SelectedPerson);
+
+      <span class="type">MessengerInstance</span>.Send(<span class="keyword">new</span> <span class="type">PersonSelected</span>
+      {
+        PersonId = value.Id
+      });
+    }
+  }
+}
+</pre>
+      </div>
+
+      <div class="span6">
+        <h2>Assisticant</h2>
+<pre><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PersonSelectorViewModel</span>
+{
+  <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">Directory</span> _directory;
+  <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">List</span>&lt;<span class="type">PersonViewModel</span>&gt; _people;
+  <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">PersonSelectionModel</span> _personSelection;
+
+  <span class="keyword">public</span> PersonSelectorViewModel(
+    <span class="type">Directory</span> directory,
+    <span class="type">PersonSelectionModel</span> personSelection)
+  {
+    _directory = directory;
+    _personSelection = personSelection;
+
+    _people = _directory.GetPeople()
+      .Select(person =&gt; <span class="keyword">new</span> <span class="type">PersonViewModel</span>(
+        _personSelection.SelectedPerson))
+      .ToList();
+  }
+
+  <span class="keyword">public</span> <span class="type">IEnumerable</span>&lt;<span class="type">PersonViewModel</span>&gt; People
+  {
+    <span class="keyword">get</span> { <span class="keyword">return</span> _people; }
+  }
+
+  <span class="keyword">public</span> <span class="type">PersonViewModel</span> SelectedPerson
+  {
+    <span class="keyword">get</span>
+    {
+      <span class="keyword">return</span> _people.FirstOrDefault(p =&gt;
+        p.Person == _personSelection.SelectedPerson);
+    }
+    <span class="keyword">set</span>
+    {
+      _personSelection.SelectedPerson = <span class="keyword">value</span> == <span class="keyword">null</span>
+        ? <span class="keyword">null</span>
+        : <span class="keyword">value</span>.Person;
+    }
+  }
+}
+</pre>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span6">
+<pre><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PersonDetailViewModel</span> : <span class="type">ViewModelBase</span>
+{
+  <span class="keyword">private</span> <span class="type">Directory</span> _directory;
+  <span class="keyword">private</span> <span class="keyword">int</span> _id;
+  <span class="keyword">private</span> <span class="keyword">string</span> _first;
+  <span class="keyword">private</span> <span class="keyword">string</span> _last;
+
+  <span class="keyword">public</span> PersonDetailViewModel()
+  {
+    _directory = <span class="keyword">new</span> <span class="type">Directory</span>();
+    <span class="type">MessengerInstance</span>.Register&lt;<span class="type">PersonSelected</span>&gt;(<span class="keyword">this</span>, message =&gt;
+    {
+      var person = _directory.LoadSession(message.PersonId);
+      _id = message.PersonId;
+      First = person.First;
+      Last = person.Last;
+    });
+  }
+
+  <span class="keyword">public</span> <span class="keyword">string</span> First
+  {
+    <span class="keyword">get</span> { <span class="keyword">return</span> _first; }
+    <span class="keyword">set</span>
+    {
+      <span class="keyword">if</span> (<span class="keyword">value</span> == _first)
+        <span class="keyword">return</span>;
+
+      _first = <span class="keyword">value</span>;
+      RaisePropertyChanged(() =&gt; <span class="keyword">this</span>.First);
+
+      <span class="type">MessengerInstance</span>.Send(<span class="keyword">new</span> <span class="type">PersonNameChanged</span>
+      {
+        PersonId = _id,
+        First = <span class="keyword">value</span>,
+        Last = Last
+      });
+    }
+  }
+
+  <span class="keyword">public</span> <span class="keyword">string</span> Last
+  {
+    <span class="keyword">get</span> { <span class="keyword">return</span> _last; }
+    <span class="keyword">set</span>
+    {
+      <span class="keyword">if</span> (<span class="keyword">value</span> == _last)
+        <span class="keyword">return</span>;
+
+      _last = <span class="keyword">value</span>;
+      RaisePropertyChanged(() =&gt; <span class="keyword">this</span>.Last);
+
+      <span class="type">MessengerInstance</span>.Send(<span class="keyword">new</span> <span class="type">PersonNameChanged</span>
+      {
+        PersonId = _id,
+        First = First,
+        Last = <span class="keyword">value</span>
+      });
+    }
+  }
+}
+</pre>
+      </div>
+      <div class="span6">
+<pre><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PersonDetailViewModel</span>
+{
+  <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">PersonSelectionModel</span> _personSelection;
+
+  <span class="keyword">public</span> PersonDetailViewModel(
+    <span class="type">PersonSelectionModel</span> personSelection)
+  {
+    _personSelection = personSelection;
+  }
+
+  <span class="keyword">public</span> <span class="keyword">string</span> First
+  {
+    <span class="keyword">get</span>
+    {
+      <span class="keyword">if</span> (_personSelection.SelectedPerson == <span class="keyword">null</span>)
+        <span class="keyword">return</span> <span class="keyword">null</span>;
+
+      <span class="keyword">return</span> _personSelection.SelectedPerson.First;
+    }
+    <span class="keyword">set</span>
+    {
+      <span class="keyword">if</span> (_personSelection.SelectedPerson == <span class="keyword">null</span>)
+        <span class="keyword">return</span>;
+
+      _personSelection.SelectedPerson.First = <span class="keyword">value</span>;
+    }
+  }
+
+  <span class="keyword">public</span> <span class="keyword">string</span> Last
+  {
+    <span class="keyword">get</span>
+    {
+      <span class="keyword">if</span> (_personSelection.SelectedPerson == <span class="keyword">null</span>)
+        <span class="keyword">return</span> <span class="keyword">null</span>;
+
+      <span class="keyword">return</span> _personSelection.SelectedPerson.Last;
+    }
+    <span class="keyword">set</span>
+    {
+      <span class="keyword">if</span> (_personSelection.SelectedPerson == <span class="keyword">null</span>)
+        <span class="keyword">return</span>;
+
+      _personSelection.SelectedPerson.Last = <span class="keyword">value</span>;
+    }
+  }
+}
+</pre>
+<pre><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PersonSelectionModel</span>
+{
+  <span class="keyword">private</span> <span class="type">Independent</span>&lt;<span class="type">PersonModel</span>&gt; _selectedPerson =
+    <span class="keyword">new</span> <span class="type">Independent</span>&lt;<span class="type">PersonModel</span>&gt;();
+
+  <span class="keyword">public</span> <span class="type">PersonModel</span> SelectedPerson
+  {
+    <span class="keyword">get</span> { <span class="keyword">return</span> _selectedPerson; }
+    <span class="keyword">set</span> { _selectedPerson.Value = <span class="keyword">value</span>; }
+  }
+}
+</pre>
       </div>
     </div>
 

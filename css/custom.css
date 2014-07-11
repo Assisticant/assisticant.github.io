@@ -76,3 +76,13 @@ border-radius: 0 3px 3px 0;
     display: inline-block;
     float: left;
 }
+
+pre {
+    font-family:consolas;font-size:12
+}
+.keyword {
+  color: blue;
+}
+.type {
+  color: #2b91af;
+}
