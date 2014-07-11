@@ -39,8 +39,7 @@
 
       <!-- Jumbotron -->
       <div class="jumbotron">
-            <div class="logo">
-            </div>
+            <a class="logo" href="images/Assisticant.png">&nbsp;</a>
         <h1>Assisticant</h1>
         <p class="lead">Thoughtful, intelligent data binding</p>
         <a class="btn btn-large btn-success" href="#">Install Package</a>
@@ -49,6 +48,18 @@
       <hr>
 
       <div class="row-fluid">
+        <div class="span4">
+          <a href="#clean">No RaisePropertyChanged</a>
+        </div>
+        <div class="span4">
+          <a href="#cross">Cross object boundaries</a>
+        </div>
+        <div class="span4">
+          <a href="#bus">No message bus</a>
+        </div>
+      </div>
+
+      <div id="clean" class="row-fluid">
           <div class="span12">
               <p>
                   Your typical MVVM framework requires you to raise property changed events. Assisticant is more thoughtful.
@@ -135,7 +146,7 @@
 
     <hr>
 
-    <div class="row-fluid">
+    <div id="cross" class="row-fluid">
         <div class="span12">
             <p>Assisticant will even discover dependencies <strong>across object boundaries</strong>. You don't need to subscribe to events.</p>
         </div>
@@ -273,6 +284,15 @@
     </div>
 
       <hr>
+
+    <div id="bus" class="row-fluid">
+      <div class="span12">
+        <p>
+          Because Assisticant can track dependencies across objects, you don&apos;t need to use a <strong>message bus</strong> to keep view models
+          in sync with one another. Just move the shared state to an object that both view models depend upon.
+        </p>
+      </div>
+    </div>
 
       <div class="footer">
         <p>&copy; Michael L Perry 2014</p>
