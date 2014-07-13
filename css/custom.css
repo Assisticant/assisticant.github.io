@@ -81,8 +81,20 @@ pre {
     font-family:consolas;font-size:12
 }
 .keyword {
-  color: blue;
+    color: blue;
 }
 .type {
-  color: #2b91af;
+    color: #2b91af;
+}
+.string {
+    color: #a31515;
+}
+.comment {
+    color: green;
+}
+.element {
+    color: #a31515;
+}
+.attribute {
+    color: red;
 }
