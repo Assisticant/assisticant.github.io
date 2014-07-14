@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Assisticant Setup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thoughtful, intelligent data binding">
+    <meta name="author" content="Michael L Perry">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="favicon.png">
+</head>
+<body>
+    <div class="container">
+
+        <div class="masthead">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <ul class="nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active"><a href="setup.html">Setup</a></li>
+                            <li><a href="documentation.html">Documentation</a></li>
+                            <li><a href="#">Examples</a></li>
+                            <li><a href="#">Patterns</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- /.navbar -->
+        </div>
+
+        <p>To get started, create a project for the XAML platform of your choice:</p>
+        <ul>
+            <li>WPF</li>
+            <li>Windows Store</li>
+            <li>Windows Phone</li>
+            <li>Universal</li>
+            <li>Silverlight</li>
+        </ul>
+
+        <p>Add a reference to the Assisticant.App NuGet package.</p>
+
+        <div class="nuget-badge">
+            <p><code>PM&gt; Install-Package Assisticant.App</code></p>
+        </div>
+
+        <p>Create portable class libraries for all of your shared code. Add the Assisticant NuGet package to these projects.</p>
+
+        <div class="nuget-badge">
+            <p><code>PM&gt; Install-Package Assisticant</code></p>
+        </div>
+
+        <p>To use the Visual Studio snippets, install the Assisticant.Snippets package. You only need to do this once per development machine.</p>
+
+        <div class="nuget-badge">
+            <p><code>PM&gt; Install-Package Assisticant.Snippets</code></p>
+        </div>
+    </div>
+</body>
+</html>
