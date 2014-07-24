@@ -72,7 +72,7 @@ border-radius: 0 3px 3px 0;
 .logo {
     width: 131px;
     height: 389px;
-    background-image: url('Logo.png');
+    background-image: url('../images/Logo.png');
     display: inline-block;
     float: left;
 }
