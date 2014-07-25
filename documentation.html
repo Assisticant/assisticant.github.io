@@ -1,70 +1,103 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Assisticant Documentation</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Assisticant</title>
     <meta name="description" content="Thoughtful, intelligent data binding">
     <meta name="author" content="Michael L Perry">
-
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
-
+    <link href="css/site.css" rel="stylesheet">
+    <link href="flaticons/flaticon.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.png">
 </head>
-<body>
+<body data-spy="scroll" data-target="#affixedNav">
+<header>
+    <nav id="navaff" class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-
-        <div class="masthead">
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <div class="container">
-                        <ul class="nav">
-                            <li><a href="indexhtml.html">Home</a></li>
-                            <li><a href="setup.html">Setup</a></li>
-                            <li class="active"><a href="documentation.html">Documentation</a></li>
-                            <li><a href="#">Examples</a></li>
-                            <li><a href="#">Patterns</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div><!-- /.navbar -->
+        <!-- Brand and toggle get grouped for better mobile display fade in" data-spy="affix" data-offset-top="0" -->
+        <div class="navbar-header col-md-2">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.php#home">Assisticant</a>
         </div>
 
-        <div class="row-fluid">
-            <div class="span8"></div>
-            <div class="span4">
-                <ul class="nav">
-                    <li><a href="#observable">Observable&lt;T&gt;</a></li>
-                    <li><a href="#observablelist">ObservableList&lt;T&gt;</a></li>
-                    <li><a href="#viewmodel">View Models</a></li>
-                    <li><a href="#viewmodellocatorbase">ViewModelLocatorBase</a></li>
-                    <li><a href="#appxaml">App.xaml</a></li>
-                    <li><a href="#page">Binding a View to a View Model</a></li>
-                </ul>
-            </div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav col-md-9">
+                <li class="active"><a href="index.php#home">Home</a></li>
+                <li><a href="documentation.php">Documentation</a></li>
+                <li><a href="#">Examples</a></li>
+                <li><a href="#">Patterns</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav visible-xs visible-sm" id="mobileSubMenu">
+            </ul>
         </div>
+    </div>
+</nav>
+<div id="subnav" class="fade in hidden-sm hidden-xs" data-spy="affix" data-offset-top="0">
+    <div class="navbar navbar-inverse navbar-static-top">
+        <div class="container text-center">
+            <ul class="nav navbar-nav inline-block" id="LargeSubMenu">
+                <li><a href="index.php#setup">Setup</a></li>
+                <li><a href="#clean">No RaisePropertyChanged</a></li>
+                <li><a href="#cross">Cross object boundaries</a></li>
+                <li><a href="#bus">No message bus</a></li>
+            </ul>
+        </div>
+    </div>
+</div></header>
+<div class="container" id="documentation">
+<div class="col-sm-3">
+    <div id="affixedNav" data-spy="affix" data-offset-top="125">
+        <ul class="nav nav-pills nav-stacked hidden-sm hidden-xs">
+            <li class="active"><a href="#observable">Observable&lt;T&gt;</a></li>
+            <li><a href="#observablelist">ObservableList&lt;T&gt;</a></li>
+            <li><a href="#viewmodel">View Models</a></li>
+            <li><a href="#viewmodellocatorbase">ViewModelLocatorBase</a></li>
+            <li><a href="#appxaml">App.xaml</a></li>
+            <li><a href="#page">Binding a View to a View Model</a></li>
+        </ul>
+    </div>
+</div>
+<div class="col-sm-9">
+<div id="docs">
+<div class="row" id="observable">
+    <div class="col-sm-12">
+        <h3>Observable&lt;T&gt;</h3>
 
-        <div id="observable" class="row-fluid">
-            <div class="span12">
-                <h3>Observable&lt;T&gt;</h3>
-                <p>Assisticant tracks dependencies within your application. Observable&lt;T&gt; is used as a field whenever you want Assisticant to track changes.</p>
-                <p>Declare the Observable&lt;T&gt; as a private field. You can replace T with a simple type like “int” or “string”. Or you can replace it with an object type, like “Person”.</p>
+        <p>Assisticant tracks dependencies within your application. Observable&lt;T&gt; is used as a field whenever you
+            want Assisticant to track changes.</p>
+
+        <p>Declare the Observable&lt;T&gt; as a private field. You can replace T with a simple type like “int” or
+            “string”. Or you can replace it with an object type, like “Person”.</p>
 <pre><span class="keyword">public class</span> <span class="type">Person</span>
 {
-    <span class="keyword">private</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt; _firstName = <span class="keyword">new</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt;();
-    <span class="keyword">private</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt; _lastName = <span class="keyword">new</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt;();
-    <span class="keyword">private</span> <span class="type">Observable</span>&lt;<span class="type">Person</span>&gt; _spouse = <span class="keyword">new</span> <span class="type">Observable</span>&lt;<span class="type">Person</span>&gt;();
-}</pre><p>Always initialize the field to a new Observable&lt;T&gt;. Forgetting this step will lead to null reference exceptions.</p>
-                <p>Expose the properties as the raw type T. The getter can return the Observable&lt;T&gt;, and it will be automatically converted to the raw type. But the setter has to assign to the Value property of the field.</p>
+    <span class="keyword">private</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt; _firstName = <span
+        class="keyword">new</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt;();
+    <span class="keyword">private</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt; _lastName = <span
+        class="keyword">new</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt;();
+    <span class="keyword">private</span> <span class="type">Observable</span>&lt;<span class="type">Person</span>&gt; _spouse = <span
+        class="keyword">new</span> <span class="type">Observable</span>&lt;<span class="type">Person</span>&gt;();
+}</pre>
+        <p>Always initialize the field to a new Observable&lt;T&gt;. Forgetting this step will lead to null reference
+            exceptions.</p>
+
+        <p>Expose the properties as the raw type T. The getter can return the Observable&lt;T&gt;, and it will be
+            automatically converted to the raw type. But the setter has to assign to the Value property of the
+            field.</p>
 <pre><span class="keyword">public class</span> <span class="type">Person</span>
 {
-    <span class="keyword">private</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt; _firstName = <span class="keyword">new</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt;();
-    <span class="keyword">private</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt; _lastName = <span class="keyword">new</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt;();
-    <span class="keyword">private</span> <span class="type">Observable</span>&lt;<span class="type">Person</span>&gt; _spouse = <span class="keyword">new</span> <span class="type">Observable</span>&lt;<span class="type">Person</span>&gt;();
+    <span class="keyword">private</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt; _firstName = <span
+        class="keyword">new</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt;();
+    <span class="keyword">private</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt; _lastName = <span
+        class="keyword">new</span> <span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt;();
+    <span class="keyword">private</span> <span class="type">Observable</span>&lt;<span class="type">Person</span>&gt; _spouse = <span
+        class="keyword">new</span> <span class="type">Observable</span>&lt;<span class="type">Person</span>&gt;();
 
     <span class="keyword">public string</span> FirstName
     {
@@ -84,22 +117,31 @@
         <span class="keyword">set</span> { _spouse.Value = <span class="keyword">value</span>; }
     }
 }</pre>
-              <p>If you need to initialize the value of the field, pass the initial value to the Observable&lt;T&gt; constructor. Use the &quot;obs&quot; snippet to insert an observable property.</p>
-            </div>
-        </div>
+        <p>If you need to initialize the value of the field, pass the initial value to the Observable&lt;T&gt;
+            constructor. Use the &quot;obs&quot; snippet to insert an observable property.</p>
+    </div>
+</div>
 
-      <div id="observablelist" class="row-fluid">
-        <div class="span12">
-            <h3>ObservableList&lt;T&gt;</h3>
-    <p>Observable&lt;T&gt; is used for single values. To track dependencies on collections, use ObservableList&lt;T&gt;. Use this as a field whenever you want to track changes to a collection.</p>
+<div class="row" id="observablelist">
+    <div class="col-sm-12">
+        <h3>ObservableList&lt;T&gt;</h3>
+
+        <p>Observable&lt;T&gt; is used for single values. To track dependencies on collections, use ObservableList&lt;T&gt;.
+            Use this as a field whenever you want to track changes to a collection.</p>
 <pre><span class="keyword">public class</span> <span class="type">Document</span>
 {
-    <span class="keyword">private</span> <span class="type">ObservableList</span>&lt;<span class="type">Person</span>&gt; _people = <span class="keyword">new</span> <span class="type">ObservableList</span>&lt;<span class="type">Person</span>&gt;();
-}</pre><p>Expose the field as a read-only property of type IEnumerable&lt;T&gt;. Usually, you want your class to be in charge of what gets added to the list. IEnumerable&lt;T&gt; lets other classes enumerate the elements of the list, but not modify it.</p>
+    <span class="keyword">private</span> <span class="type">ObservableList</span>&lt;<span class="type">Person</span>&gt; _people = <span
+        class="keyword">new</span> <span class="type">ObservableList</span>&lt;<span class="type">Person</span>&gt;();
+}</pre>
+        <p>Expose the field as a read-only property of type IEnumerable&lt;T&gt;. Usually, you want your class to be in
+            charge of what gets added to the list. IEnumerable&lt;T&gt; lets other classes enumerate the elements of the
+            list, but not modify it.</p>
 <pre><span class="keyword">public</span> <span class="type">IEnumerable</span>&lt;<span class="type">Person</span>&gt; People
 {
     <span class="keyword">get</span> { <span class="keyword">return</span> _people; }
-}</pre><p>ObservableList&lt;T&gt; supports all of the methods of List&lt;T&gt;. You can Add, Insert, Remove, etc. just as you are used to.</p>
+}</pre>
+        <p>ObservableList&lt;T&gt; supports all of the methods of List&lt;T&gt;. You can Add, Insert, Remove, etc. just
+            as you are used to.</p>
 <pre><span class="keyword">public</span> <span class="type">Person</span> NewPerson()
 {
     <span class="type">Person</span> person = <span class="keyword">new</span> <span class="type">Person</span>();
@@ -110,14 +152,20 @@
 <span class="keyword">public void</span> DeletePerson(<span class="type">Person</span> person)
 {
     _people.Remove(person);
-}</pre><p>Any dependent properties that reference the list, even through the IEnumerable&lt;T&gt; interface, will take a dependency upon its contents. They will be updated when something is added to or removed from the list. Use the &quot;obslist&quot; snippet to insert an observable list property.</p>
-            </div>
-        </div>
+}</pre>
+        <p>Any dependent properties that reference the list, even through the IEnumerable&lt;T&gt; interface, will take
+            a dependency upon its contents. They will be updated when something is added to or removed from the list.
+            Use the &quot;obslist&quot; snippet to insert an observable list property.</p>
+    </div>
+</div>
 
-        <div id="viewmodel" class="row-fluid">
-            <div class="span12">
-                <h3>View Models</h3>
-                <p>View models are simple classes that hold references to models. They expose properties for the purpose of data binding. These properties are implemented as pass-through methods, getting and setting data from the models. Assisticant view models do not inherit from a base class or implement an interface.</p>
+<div class="row" id="viewmodel">
+    <div class="col-sm-12">
+        <h3>View Models</h3>
+
+        <p>View models are simple classes that hold references to models. They expose properties for the purpose of data
+            binding. These properties are implemented as pass-through methods, getting and setting data from the models.
+            Assisticant view models do not inherit from a base class or implement an interface.</p>
 <pre><span class="keyword">public class</span> <span class="type">ItemViewModel</span>
 {
     <span class="keyword">private readonly</span> <span class="type">Item</span> _item;
@@ -133,13 +181,16 @@
         <span class="keyword">set</span> { _item.Name = <span class="keyword">value</span>; }
     }
 }</pre>
-                <p>The pass-through methods don’t have to be direct one-to-one accessors. In fact, they rarely are. It is far more common to alter the values on the way in and out. Here are some common types of alterations:</p>
-                <ul>
-                    <li>Return a default value if it hasn’t been set in the model. </li>
-                    <li>Combine two or more model properties to display an aggregate. </li>
-                    <li>Project child model objects into child view models. </li>
-                </ul>
-                <p>That last one is very important. View models don’t return models. They return other view models. You never want your view to data bind directly against a model object. It should always have a view model in between.</p>
+        <p>The pass-through methods don’t have to be direct one-to-one accessors. In fact, they rarely are. It is far
+            more common to alter the values on the way in and out. Here are some common types of alterations:</p>
+        <ul>
+            <li>Return a default value if it hasn’t been set in the model.</li>
+            <li>Combine two or more model properties to display an aggregate.</li>
+            <li>Project child model objects into child view models.</li>
+        </ul>
+        <p>That last one is very important. View models don’t return models. They return other view models. You never
+            want your view to data bind directly against a model object. It should always have a view model in
+            between.</p>
 <pre><span class="keyword">public class</span> <span class="type">MainViewModel</span>
 {
     <span class="keyword">private readonly</span> <span class="type">Document</span> _document;
@@ -161,7 +212,9 @@
         }
     }
 }</pre>
-                <p>In addition to the top-level view models, you will often have headers. These are small view models created for the purpose of populating a list. The properties of a header are usually read-only, so you don’t create setters for them.</p>
+        <p>In addition to the top-level view models, you will often have headers. These are small view models created
+            for the purpose of populating a list. The properties of a header are usually read-only, so you don’t create
+            setters for them.</p>
 <pre><span class="keyword">public class</span> <span class="type">ItemHeader</span>
 {
     <span class="keyword">private readonly</span> <span class="type">Item</span> _item;
@@ -185,7 +238,8 @@
     {
         <span class="keyword">if</span> (obj == <span class="keyword">this</span>)
             <span class="keyword">return true</span>;
-        <span class="type">ItemHeader</span> that = obj <span class="keyword">as</span> <span class="type">ItemHeader</span>;
+        <span class="type">ItemHeader</span> that = obj <span class="keyword">as</span> <span
+        class="type">ItemHeader</span>;
         <span class="keyword">if</span> (that == <span class="keyword">null</span>)
             <span class="keyword">return false</span>;
         <span class="keyword">return</span> <span class="type">Object</span>.Equals(<span class="keyword">this</span>._item, that._item);
@@ -196,14 +250,22 @@
         <span class="keyword">return</span> _item.GetHashCode();
     }
 }</pre>
-                <p>A header always has to implement Equals and GetHashCode. These methods should compare two headers to see if they represent the same object. This allows Assisticant to preserve the selection and scroll position of a list even as the items in the list are changing. It also assists with binding the SelectedItem property. The SelectedItem should be equal to one element in the ItemsSource.</p>
-            </div>
-        </div>
+        <p>A header always has to implement Equals and GetHashCode. These methods should compare two headers to see if
+            they represent the same object. This allows Assisticant to preserve the selection and scroll position of a
+            list even as the items in the list are changing. It also assists with binding the SelectedItem property. The
+            SelectedItem should be equal to one element in the ItemsSource.</p>
+    </div>
+</div>
 
-        <div id="viewmodellocatorbase" class="row-fluid">
-            <div class="span12">
-                <h3>ViewModelLocatorBase</h3>
-                <p>The ViewModelLocator class has a property for each view model. Since it creates the view models, it also needs references to the model so it can call the constructors. These references are likely to include a selection model – an object responsible for keeping track of which item the user has selected. This comes in handy when the user can select something from the main view model, and then navigate to the child view. The selected item is passed into the constructor of the child view model.</p>
+<div class="row" id="viewmodellocatorbase">
+    <div class="col-sm-12">
+        <h3>ViewModelLocatorBase</h3>
+
+        <p>The ViewModelLocator class has a property for each view model. Since it creates the view models, it also
+            needs references to the model so it can call the constructors. These references are likely to include a
+            selection model – an object responsible for keeping track of which item the user has selected. This comes in
+            handy when the user can select something from the main view model, and then navigate to the child view. The
+            selected item is passed into the constructor of the child view model.</p>
 <pre><span class="keyword">public class</span> <span class="type">ViewModelLocator</span> : <span class="type">ViewModelLocatorBase</span>
 {
     <span class="keyword">private</span> <span class="type">Document</span> _document;
@@ -220,14 +282,16 @@
 
     <span class="keyword">public object</span> Main
     {
-        <span class="keyword">get</span> { <span class="keyword">return</span> ViewModel(() =&gt; <span class="keyword">new</span> <span class="type">MainViewModel</span>(<br>            _document, _selection)); }
+        <span class="keyword">get</span> { <span class="keyword">return</span> ViewModel(() =&gt; <span class="keyword">new</span> <span
+        class="type">MainViewModel</span>(<br>            _document, _selection)); }
     }
 
     <span class="keyword">public object</span> Child
     {
         <span class="keyword">get</span>
         {
-            <span class="keyword">return</span> ViewModel(() =&gt; _selection.SelectedItem == <span class="keyword">null</span>
+            <span class="keyword">return</span> ViewModel(() =&gt; _selection.SelectedItem == <span
+        class="keyword">null</span>
                 ? <span class="keyword">null</span>
                 : <span class="keyword">new</span> <span class="type">ChildViewModel</span>(_selection.SelectedItem));
         }
@@ -236,10 +300,11 @@
     <span class="keyword">private</span> <span class="type">Document</span> LoadDocument()
     {
         <span class="comment">// TODO: Load your document here.</span>
-        <span class="type">Document</span> document = <span class="keyword">new</span> <span class="type">Document</span>();
+        <span class="type">Document</span> document = <span class="keyword">new</span> <span
+        class="type">Document</span>();
         <span class="keyword">return</span> document;
     }
-    
+
     <span class="keyword">private</span> <span class="type">Document</span> LoadDesignModeDocument()
     {
     <span class="comment">// TODO: Load your design mode data here.</span>
@@ -248,41 +313,110 @@
     }
 }
 </pre>
-                <p>The ViewModelLocatorBase class in Assisticant provides the ViewModel method. This method takes a lambda expression that creates the view model. Assisticant will cache the view model, and make sure that the constructor is called again if the parameters change. For example, when the user selects a different item, Assisticant will construct a new child view model.</p>
-            </div>
-        </div>
+        <p>The ViewModelLocatorBase class in Assisticant provides the ViewModel method. This method takes a lambda
+            expression that creates the view model. Assisticant will cache the view model, and make sure that the
+            constructor is called again if the parameters change. For example, when the user selects a different item,
+            Assisticant will construct a new child view model.</p>
+    </div>
+</div>
 
-        <div id="appxaml" class="row-fluid">
-            <div class="span12">
-                <h3>App.xaml</h3>
-                <p>The application adds an instance of the view model locator to the resource dictionary. It references the namespace, and gives the object a key. This lets views find the locator.</p>
+<div class="row" id="appxaml">
+    <div class="col-sm-12">
+        <h3>App.xaml</h3>
+
+        <p>The application adds an instance of the view model locator to the resource dictionary. It references the
+            namespace, and gives the object a key. This lets views find the locator.</p>
 <pre><span class="keyword">&lt;</span><span class="element">Application</span>
-    <span class="attribute">x</span><span class="keyword">:</span><span class="attribute">Class</span><span class="keyword">="MyCoolApp.App"</span>
-    <span class="attribute">xmlns</span><span class="keyword">:</span><span class="attribute">vm</span><span class="keyword">="clr-namespace:MyCoolApp.ViewModels"&gt;</span>
+    <span class="attribute">x</span><span class="keyword">:</span><span class="attribute">Class</span><span
+        class="keyword">="MyCoolApp.App"</span>
+    <span class="attribute">xmlns</span><span class="keyword">:</span><span class="attribute">vm</span><span
+        class="keyword">="clr-namespace:MyCoolApp.ViewModels"&gt;</span>
 
     <span class="comment">&lt;!--Application Resources--&gt;</span>
     <span class="keyword">&lt;</span><span class="element">Application.Resources</span><span class="keyword">&gt;
-        &lt;</span><span class="element">vm</span><span class="keyword">:</span><span class="element">ViewModelLocator</span> <span class="attribute">x</span><span class="keyword">:</span><span class="attribute">Key</span><span class="keyword">="Locator"/&gt;</span>
-<span class="keyword">    &lt;/</span><span class="element">Application.Resources</span><span class="keyword">&gt;</span>
+        &lt;</span><span class="element">vm</span><span class="keyword">:</span><span
+        class="element">ViewModelLocator</span> <span class="attribute">x</span><span class="keyword">:</span><span
+        class="attribute">Key</span><span class="keyword">="Locator"/&gt;</span>
+<span class="keyword">    &lt;/</span><span class="element">Application.Resources</span><span
+        class="keyword">&gt;</span>
 <span class="keyword">&lt;/</span><span class="element">Application</span><span class="keyword">&gt;</span></pre>
-                <p>There will be other things in the resource dictionary, including perhaps merged dictionaries. Just put the view model locator right inside the Application.Resources element.</p>
-            </div>
-        </div>
+        <p>There will be other things in the resource dictionary, including perhaps merged dictionaries. Just put the
+            view model locator right inside the Application.Resources element.</p>
+    </div>
+</div>
 
-        <div id="page" class="row-fluid">
-            <div id="span12">
-                <h3>Binding a View to a View Model</h3>
-                <p>Each view sets its data context by binding to a property of the view model locator. It sets the binding source to the view model locator as a static resource.</p>
+<div class="row" id="page">
+    <div id="span12">
+        <h3>Binding a View to a View Model</h3>
+
+        <p>Each view sets its data context by binding to a property of the view model locator. It sets the binding
+            source to the view model locator as a static resource.</p>
 <pre><span class="keyword">&lt;</span><span class="element">UserControl</span>
-    <span class="attribute">x</span><span class="keyword">:</span><span class="attribute">Class</span><span class="keyword">="MyCoolApp.MainView"</span>
-    <span class="attribute">DataContext</span><span class="keyword">="{</span><span class="element">Binding</span> <span class="attribute">Main</span><span class="keyword">,</span> <span class="attribute">Source</span><span class="keyword">={</span><span class="element">StaticResource</span> <span class="attribute">Locator</span><span class="keyword">}}"&gt;</span>
+    <span class="attribute">x</span><span class="keyword">:</span><span class="attribute">Class</span><span
+        class="keyword">="MyCoolApp.MainView"</span>
+    <span class="attribute">DataContext</span><span class="keyword">="{</span><span class="element">Binding</span> <span
+        class="attribute">Main</span><span class="keyword">,</span> <span class="attribute">Source</span><span
+        class="keyword">={</span><span class="element">StaticResource</span> <span class="attribute">Locator</span><span
+        class="keyword">}}"&gt;</span>
 
 <span class="keyword">&lt;/</span><span class="element">UserControl</span><span class="keyword">&gt;</span></pre>
-                <p>With this pattern, the view model locator is a singleton. Each view accesses a property of that single object to get its view model. The base class provided by Assisticant makes sure that a new view model is created if any of its constructor parameters change. This lets you set state in one view, and then depend upon that state as you navigate to another view. It’s a natural and straight-forward way of structuring your XAML applications. </p>
-            </div>
-        </div>
-
+        <p>With this pattern, the view model locator is a singleton. Each view accesses a property of that single object
+            to get its view model. The base class provided by Assisticant makes sure that a new view model is created if
+            any of its constructor parameters change. This lets you set state in one view, and then depend upon that
+            state as you navigate to another view. It’s a natural and straight-forward way of structuring your XAML
+            applications. </p>
     </div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+    <div class="footer">
+    <p>&copy; Michael L Perry 2014</p>
+</div>
 
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script></footer>
+<!-- /container -->
+<script>
+    jQuery(function () {
+        $("#subnav").hide();
+        jQuery('#main').css({
+            'height': ((jQuery(window).height())) + 'px'
+        });
+
+        jQuery("#subnav").css({
+            'top': (jQuery(window).height()) - 50 + 'px'
+        });
+        jQuery("#subnav").attr("data-offset-top", (jQuery(window).height()) - 100);
+        jQuery(window).resize(function () {
+            jQuery('#main').css({
+                'height': ((jQuery(window).height())) + 'px'
+            });
+            jQuery("#subnav").css({
+                'top': (jQuery(window).height()) - 50 + 'px'
+            });
+            jQuery("#subnav").attr("data-offset-top", (jQuery(window).height()) - 100);
+        });
+    });
+    $(function () {
+        $('a[href*=#]:not([href=#])').click(function () {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top-5
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>

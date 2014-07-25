@@ -1,75 +1,93 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>Assisticant</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Thoughtful, intelligent data binding">
     <meta name="author" content="Michael L Perry">
-
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
-
+    <link href="css/site.css" rel="stylesheet">
+    <link href="flaticons/flaticon.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.png">
-  </head>
-
-  <body>
-
+</head>
+<body>
+<header id="home">
+    <nav id="navaff" class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display fade in" data-spy="affix" data-offset-top="0" -->
+        <div class="navbar-header col-md-2">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.php#home">Assisticant</a>
+        </div>
 
-      <div class="masthead">
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="container">
-              <ul class="nav">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="setup.html">Setup</a></li>
-                <li><a href="documentation.html">Documentation</a></li>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav col-md-9">
+                <li class="active"><a href="index.php#home">Home</a></li>
+                <li><a href="documentation.php">Documentation</a></li>
                 <li><a href="#">Examples</a></li>
                 <li><a href="#">Patterns</a></li>
                 <li><a href="#">Contact</a></li>
-              </ul>
+            </ul>
+            <ul class="nav navbar-nav visible-xs visible-sm" id="mobileSubMenu">
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="subnav" class="fade in hidden-sm hidden-xs" data-spy="affix" data-offset-top="0">
+    <div class="navbar navbar-inverse navbar-static-top">
+        <div class="container text-center">
+            <ul class="nav navbar-nav inline-block" id="LargeSubMenu">
+                <li><a href="index.php#setup">Setup</a></li>
+                <li><a href="#clean">No RaisePropertyChanged</a></li>
+                <li><a href="#cross">Cross object boundaries</a></li>
+                <li><a href="#bus">No message bus</a></li>
+            </ul>
+        </div>
+    </div>
+</div></header>
+<!-- Jumbotron -->
+<div id="main">
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <div class="col-sm-4 text-right hidden-xs hidden-sm">
+                    <img src="images/Logo.png" class="img-responsive inline-block">
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-center">
+                        <h1>Assisticant</h1>
+
+                        <p class="lead"><i class="flaticon-light28"></i>Thoughtful, intelligent data binding</p>
+                        <a class="btn btn-large btn-success" href="#setup"> <i class="flaticon-thunderbolt1"></i> Get
+                            Started</a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
             </div>
-          </div>
-        </div><!-- /.navbar -->
-      </div>
-
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-            <a class="logo" href="images/Assisticant.png">&nbsp;</a>
-        <h1>Assisticant</h1>
-        <p class="lead">Thoughtful, intelligent data binding</p>
-        <a class="btn btn-large btn-success" href="setup.html">Get Started</a>
-      </div>
-
-      <hr>
-
-      <div class="row-fluid">
-        <div class="span4">
-          <a href="#clean">No RaisePropertyChanged</a>
         </div>
-        <div class="span4">
-          <a href="#cross">Cross object boundaries</a>
-        </div>
-        <div class="span4">
-          <a href="#bus">No message bus</a>
-        </div>
-      </div>
-
-      <div id="clean" class="row-fluid">
-          <div class="span12">
-              <p>
-                  Your typical MVVM framework requires you to raise property changed events. Assisticant is more thoughtful.
-                  She figures out when the UI needs to be updated. You just write your code. She intelligently follows
-                  your logic and raises property changed and collection changed events exactly when she should.
-              </p>
-          </div>
-      </div>
-
-      <div class="row-fluid">
-        <div class="span4">
-          <h2>Typical MVVM</h2>
+    </div>
+</div>
+<div id="intro">
+<div class="container">
+<div id="clean" class="row">
+    <div class="col-sm-12">
+        <p class="well">
+            Your typical MVVM framework requires you to raise property changed events. Assisticant is more thoughtful.
+            She figures out when the UI needs to be updated. You just write your code. She intelligently follows
+            your logic and raises property changed and collection changed events exactly when she should.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="box">
+            <h3>Typical MVVM</h3>
 <pre class="code"><span class="keyword">public class </span><span class="type">PersonViewModel</span> :
   <span class="type">ViewModelBase</span>
 {
@@ -105,9 +123,12 @@
       <span class="keyword">return </span>First + <span class="string">&quot; &quot;</span> + Last;
     }
   }
-}</pre>        </div>
-        <div class="span4">
-          <h2>Assisticant</h2>
+}</pre>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="box">
+            <h3>Assisticant</h3>
 <pre class="code"><span class="keyword">public class </span><span class="type">PersonViewModel
 </span>{
   <span class="keyword">private </span><span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt; _first =
@@ -136,24 +157,27 @@
   }
 }</pre>
         </div>
-        <div class="span4">
-          <h2>The Result</h2>
-          <img src="PersonName.gif" alt="FullName property updates automatically.">
-        </div>
-      </div>
-
-    <hr>
-
-    <div id="cross" class="row-fluid">
-        <div class="span12">
-            <p>Assisticant will even discover dependencies <strong>across object boundaries</strong>. You don't need to subscribe to events.</p>
+    </div>
+    <div class="col-sm-4">
+        <div class="box">
+            <h3>The Result</h3>
+            <img src="PersonName.gif" class="img-responsive" alt="FullName property updates automatically.">
         </div>
     </div>
-
-    <div class="row-fluid">
-        <div class="span6">
-            <h2>Typical MVVM</h2>
-<pre><span class="keyword">public class </span><span class="type">PersonModel </span>: <span class="type">ObservableBase
+</div>
+<hr>
+<div id="cross" class="row">
+    <div class="col-sm-12">
+        <p class="well">Assisticant will even discover dependencies <strong>across object boundaries</strong>. You don't
+            need to
+            subscribe to events.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="box">
+            <h3>Typical MVVM</h3>
+<pre class="code"><span class="keyword">public class </span><span class="type">PersonModel </span>: <span class="type">ObservableBase
 </span>{
   <span class="keyword">private string </span>_first;
   <span class="keyword">private string </span>_last;
@@ -179,10 +203,12 @@
   }
 }
 </pre>
-      </div>
-        <div class="span6">
-            <h2>Assisticant</h2>
-<pre><span class="keyword">public class </span><span class="type">PersonModel
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="box">
+            <h3>Assisticant</h3>
+<pre class="code"><span class="keyword">public class </span><span class="type">PersonModel
 </span>{
   <span class="keyword">private </span><span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt; _first =
     <span class="keyword">new </span><span class="type">Observable</span>&lt;<span class="keyword">string</span>&gt;();
@@ -204,10 +230,12 @@
 </pre>
         </div>
     </div>
-
-    <div class="row-fluid">
-      <div class="span6">
-<pre><span class="keyword">public class </span><span class="type">PersonViewModel </span>: <span class="type">ViewModelBase
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="box">
+<pre class="code"><span class="keyword">public class </span><span class="type">PersonViewModel </span>: <span
+        class="type">ViewModelBase
 </span>{
   <span class="keyword">private readonly </span><span class="type">PersonModel </span>_person;
 
@@ -254,8 +282,10 @@
 }
 </pre>
         </div>
-        <div class="span6">
-<pre><span class="keyword">public class </span><span class="type">PersonViewModel
+    </div>
+    <div class="col-sm-6">
+        <div class="box">
+<pre class="code"><span class="keyword">public class </span><span class="type">PersonViewModel
 </span>{
   <span class="keyword">private readonly </span><span class="type">PersonModel </span>_person;
 
@@ -287,26 +317,29 @@
 </pre>
         </div>
     </div>
-
-      <hr>
-
-    <div id="bus" class="row-fluid">
-      <div class="span12">
-        <p>
-          Because Assisticant can track dependencies across objects, you don&apos;t need to use a <strong>message bus</strong> to keep view models
-          in sync with one another. Just move the shared state to an object that both view models depend upon.
+</div>
+<hr>
+<div id="bus" class="row">
+    <div class="col-sm-12">
+        <p class="well">
+            Because Assisticant can track dependencies across objects, you don&apos;t need to use a <strong>message
+                bus</strong> to keep view models
+            in sync with one another. Just move the shared state to an object that both view models depend upon.
         </p>
-      </div>
     </div>
-
-    <div class="row-fluid">
-      <div class="span6">
-        <h2>Typical MVVM</h2>
-<pre><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PersonSelectorViewModel</span> : <span class="type">ViewModelBase</span>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="box">
+            <h3>Typical MVVM</h3>
+<pre class="code"><span class="keyword">public</span> <span class="keyword">class</span> <span
+        class="type">PersonSelectorViewModel</span> : <span class="type">ViewModelBase</span>
 {
   <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">Directory</span> _directory;
-  <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">List</span>&lt;<span class="type">PersonViewModel</span>&gt; _people;
-  <span class="keyword">private</span> <span class="type">PersonViewModel</span> _selectedPerson = <span class="keyword">null</span>;
+  <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">List</span>&lt;<span
+        class="type">PersonViewModel</span>&gt; _people;
+  <span class="keyword">private</span> <span class="type">PersonViewModel</span> _selectedPerson = <span
+        class="keyword">null</span>;
 
   <span class="keyword">public</span> PersonSelectorViewModel(
     <span class="type">Directory</span> directory)
@@ -347,15 +380,19 @@
   }
 }
 </pre>
-      </div>
-
-      <div class="span6">
-        <h2>Assisticant</h2>
-<pre><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PersonSelectorViewModel</span>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="box">
+            <h3>Assisticant</h3>
+<pre class="code"><span class="keyword">public</span> <span class="keyword">class</span> <span
+        class="type">PersonSelectorViewModel</span>
 {
   <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">Directory</span> _directory;
-  <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">List</span>&lt;<span class="type">PersonViewModel</span>&gt; _people;
-  <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">PersonSelectionModel</span> _personSelection;
+  <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">List</span>&lt;<span
+        class="type">PersonViewModel</span>&gt; _people;
+  <span class="keyword">private</span> <span class="keyword">readonly</span> <span
+        class="type">PersonSelectionModel</span> _personSelection;
 
   <span class="keyword">public</span> PersonSelectorViewModel(
     <span class="type">Directory</span> directory,
@@ -391,11 +428,14 @@
   }
 }
 </pre>
-      </div>
+        </div>
     </div>
-    <div class="row-fluid">
-      <div class="span6">
-<pre><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PersonDetailViewModel</span> : <span class="type">ViewModelBase</span>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="box">
+<pre class="code"><span class="keyword">public</span> <span class="keyword">class</span> <span
+        class="type">PersonDetailViewModel</span> : <span class="type">ViewModelBase</span>
 {
   <span class="keyword">private</span> <span class="type">Directory</span> _directory;
   <span class="keyword">private</span> <span class="keyword">int</span> _id;
@@ -405,7 +445,8 @@
   <span class="keyword">public</span> PersonDetailViewModel()
   {
     _directory = <span class="keyword">new</span> <span class="type">Directory</span>();
-    <span class="type">MessengerInstance</span>.Register&lt;<span class="type">PersonSelected</span>&gt;(<span class="keyword">this</span>, message =&gt;
+    <span class="type">MessengerInstance</span>.Register&lt;<span class="type">PersonSelected</span>&gt;(<span
+        class="keyword">this</span>, message =&gt;
     {
       var person = _directory.LoadSession(message.PersonId);
       _id = message.PersonId;
@@ -455,11 +496,15 @@
   }
 }
 </pre>
-      </div>
-      <div class="span6">
-<pre><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PersonDetailViewModel</span>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="box">
+<pre class="code"><span class="keyword">public</span> <span class="keyword">class</span> <span
+        class="type">PersonDetailViewModel</span>
 {
-  <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="type">PersonSelectionModel</span> _personSelection;
+  <span class="keyword">private</span> <span class="keyword">readonly</span> <span
+        class="type">PersonSelectionModel</span> _personSelection;
 
   <span class="keyword">public</span> PersonDetailViewModel(
     <span class="type">PersonSelectionModel</span> personSelection)
@@ -504,7 +549,8 @@
   }
 }
 </pre>
-<pre><span class="keyword">public</span> <span class="keyword">class</span> <span class="type">PersonSelectionModel</span>
+<pre class="code"><span class="keyword">public</span> <span class="keyword">class</span> <span
+        class="type">PersonSelectionModel</span>
 {
   <span class="keyword">private</span> <span class="type">Observable</span>&lt;<span class="type">PersonModel</span>&gt; _selectedPerson =
     <span class="keyword">new</span> <span class="type">Observable</span>&lt;<span class="type">PersonModel</span>&gt;();
@@ -516,20 +562,99 @@
   }
 }
 </pre>
-      </div>
+        </div>
     </div>
+</div>
+</div>
+</div>
+<div id="setup">
+    <div class="container">
+        <h1>Setup</h1>
 
-      <div class="footer">
-        <p>&copy; Michael L Perry 2014</p>
-      </div>
+        <p>To get started, create a project for the XAML platform of your choice:</p>
+        <ul>
+            <li>WPF</li>
+            <li>Windows Store</li>
+            <li>Windows Phone</li>
+            <li>Universal</li>
+            <li>Silverlight</li>
+        </ul>
 
-    </div> <!-- /container -->
+        <p>Add a reference to the Assisticant.App NuGet package.</p>
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+        <div class="nuget-badge">
+            <p><code>PM&gt; Install-Package Assisticant.App</code></p>
+        </div>
 
-  </body>
+        <p>Create portable class libraries for all of your shared code. Add the Assisticant NuGet package to these
+            projects.</p>
+
+        <div class="nuget-badge">
+            <p><code>PM&gt; Install-Package Assisticant</code></p>
+        </div>
+
+        <p>To use the Visual Studio snippets, install the Assisticant.Snippets package. You only need to do this once
+            per development machine.</p>
+
+        <div class="nuget-badge">
+            <p><code>PM&gt; Install-Package Assisticant.Snippets</code></p>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer">
+    <p>&copy; Michael L Perry 2014</p>
+</div>
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script></footer>
+<!-- /container -->
+<script>
+    jQuery(function () {
+        if ($(window).width() >= 980) {
+            jQuery('#main').css({
+                'height': ((jQuery(window).height())) + 'px'
+            });
+            jQuery("#subnav").css({
+                'top': (jQuery(window).height()) - 50 + 'px'
+            });
+            jQuery("#subnav").attr("data-offset-top", (jQuery(window).height()) - 100);
+            jQuery(window).resize(function () {
+                jQuery('#main').css({
+                    'height': ((jQuery(window).height())) + 'px'
+                });
+                jQuery("#subnav").css({
+                    'top': (jQuery(window).height()) - 50 + 'px'
+                });
+                jQuery("#subnav").attr("data-offset-top", (jQuery(window).height()) - 100);
+            });
+        } else {
+
+            var mobileMenu = $("#LargeSubMenu").html();
+            console.log(mobileMenu);
+            $("#mobileSubMenu").html(mobileMenu);
+        }
+    });
+    $(function () {
+        $('a[href*=#]:not([href=#])').click(function () {
+            $(".active").removeClass("active");
+            $(this).addClass("active");
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top - 90
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+</script>
+</body>
 </html>
