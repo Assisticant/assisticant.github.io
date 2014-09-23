@@ -1,5 +1,5 @@
-# Update Controls
+# Assisticant
 
-This MVVM dependency tracking library has been around for a while, but has gained limited adoption. This project is an attempt to provide greater value to the .NET community by better illustrating the power of the library.
+Web site for the MVVM dependency tracking framework.
 
-The page is published on [GitHub Pages](http://michaellperry.github.io/UpdateControlsRedesign/)
+The page is published at [assisticant.net](http://assisticant.net/)
