@@ -101,20 +101,20 @@
 
     <span class="keyword">public string</span> FirstName
     {
-        <span class="keyword">get</span> { <span class="keyword">return</span> _firstName; }
-        <span class="keyword">set</span> { _firstName.Value = <span class="keyword">value</span>; }
+        <span class="keyword">get</span> =&gt; _firstName;
+        <span class="keyword">set</span> =&gt; _firstName.Value = <span class="keyword">value</span>;
     }
 
     <span class="keyword">public string</span> LastName
     {
-        <span class="keyword">get</span> { <span class="keyword">return</span> _lastName; }
-        <span class="keyword">set</span> { _lastName.Value = <span class="keyword">value</span>; }
+        <span class="keyword">get</span> =&gt; _lastName;
+        <span class="keyword">set</span> =&gt; _lastName.Value = <span class="keyword">value</span>;
     }
 
     <span class="keyword">public</span> <span class="type">Person</span> Spouse
     {
-        <span class="keyword">get</span> { <span class="keyword">return</span> _spouse; }
-        <span class="keyword">set</span> { _spouse.Value = <span class="keyword">value</span>; }
+        <span class="keyword">get</span> =&gt; _spouse;
+        <span class="keyword">set</span> =&gt; _spouse.Value = <span class="keyword">value</span>;
     }
 }</pre>
         <p>If you need to initialize the value of the field, pass the initial value to the Observable&lt;T&gt;
@@ -136,10 +136,7 @@
         <p>Expose the field as a read-only property of type IEnumerable&lt;T&gt;. Usually, you want your class to be in
             charge of what gets added to the list. IEnumerable&lt;T&gt; lets other classes enumerate the elements of the
             list, but not modify it.</p>
-<pre><span class="keyword">public</span> <span class="type">IEnumerable</span>&lt;<span class="type">Person</span>&gt; People
-{
-    <span class="keyword">get</span> { <span class="keyword">return</span> _people; }
-}</pre>
+<pre><span class="keyword">public</span> <span class="type">IEnumerable</span>&lt;<span class="type">Person</span>&gt; People =&gt; _people;</pre>
         <p>ObservableList&lt;T&gt; supports all of the methods of List&lt;T&gt;. You can Add, Insert, Remove, etc. just
             as you are used to.</p>
 <pre><span class="keyword">public</span> <span class="type">Person</span> NewPerson()
@@ -177,8 +174,8 @@
 
     <span class="keyword">public string</span> Name
     {
-        <span class="keyword">get</span> { <span class="keyword">return</span> _item.Name; }
-        <span class="keyword">set</span> { _item.Name = <span class="keyword">value</span>; }
+        <span class="keyword">get</span> =&gt; _item.Name;
+        <span class="keyword">set</span> =&gt; _item.Name = <span class="keyword">value</span>;
     }
 }</pre>
         <p>The pass-through methods don’t have to be direct one-to-one accessors. In fact, they rarely are. It is far
@@ -202,15 +199,9 @@
         _selection = selection;
     }
 
-    <span class="keyword">public</span> <span class="type">IEnumerable</span>&lt;<span class="type">ItemHeader</span>&gt; Items
-    {
-        <span class="keyword">get</span>
-        {
-            <span class="keyword">return
-                from</span> item <span class="keyword">in</span> _document.Items
-                <span class="keyword">select new</span> <span class="type">ItemHeader</span>(item);
-        }
-    }
+    <span class="keyword">public</span> <span class="type">IEnumerable</span>&lt;<span class="type">ItemHeader</span>&gt; Items =&gt;
+        from</span> item <span class="keyword">in</span> _document.Items
+        <span class="keyword">select new</span> <span class="type">ItemHeader</span>(item);
 }</pre>
         <p>In addition to the top-level view models, you will often have headers. These are small view models created
             for the purpose of populating a list. The properties of a header are usually read-only, so you don’t create
@@ -224,15 +215,9 @@
         _item = Item;
     }
 
-    <span class="keyword">public</span> <span class="type">Item</span> Item
-    {
-        <span class="keyword">get</span> { <span class="keyword">return</span> _item; }
-    }
+    <span class="keyword">public</span> <span class="type">Item</span> Item =&gt; _item;
 
-    <span class="keyword">public string</span> Name
-    {
-        <span class="keyword">get</span> { <span class="keyword">return</span> _item.Name ?? <span class="string">"&lt;New Item&gt;"</span>; }
-    }
+    <span class="keyword">public string</span> Name =&gt; _item.Name ?? <span class="string">"&lt;New Item&gt;"</span>;
 
     <span class="keyword">public override bool</span> Equals(<span class="keyword">object</span> obj)
     {
@@ -273,29 +258,20 @@
 
     <span class="keyword">public</span> ViewModelLocator()
     {
-    	<span class="keyword">if</span> (DesignMode)
-			_document = LoadDesignModeDocument();
-		<span class="keyword">else</span>
-			_document = LoadDocument();
+        <span class="keyword">if</span> (DesignMode)
+            _document = LoadDesignModeDocument();
+        <span class="keyword">else</span>
+            _document = LoadDocument();
         _selection = <span class="keyword">new</span> <span class="type">Selection</span>();
     }
 
-    <span class="keyword">public object</span> Main
-    {
-        <span class="keyword">get</span> { <span class="keyword">return</span> ViewModel(() =&gt; <span class="keyword">new</span> <span
-        class="type">MainViewModel</span>(<br>            _document, _selection)); }
-    }
+    <span class="keyword">public object</span> Main =&gt; ViewModel(() =&gt;
+        <span class="keyword">new</span> <span class="type">MainViewModel</span>(_document, _selection));
 
-    <span class="keyword">public object</span> Child
-    {
-        <span class="keyword">get</span>
-        {
-            <span class="keyword">return</span> ViewModel(() =&gt; _selection.SelectedItem == <span
-        class="keyword">null</span>
-                ? <span class="keyword">null</span>
-                : <span class="keyword">new</span> <span class="type">ChildViewModel</span>(_selection.SelectedItem));
-        }
-    }
+    <span class="keyword">public object</span> Child =&gt; ViewModel(() =&gt;
+        _selection.SelectedItem == <span class="keyword">null</span>
+            ? <span class="keyword">null</span>
+            : <span class="keyword">new</span> <span class="type">ChildViewModel</span>(_selection.SelectedItem));
 
     <span class="keyword">private</span> <span class="type">Document</span> LoadDocument()
     {
@@ -307,9 +283,9 @@
 
     <span class="keyword">private</span> <span class="type">Document</span> LoadDesignModeDocument()
     {
-    <span class="comment">// TODO: Load your design mode data here.</span>
-    <span class="type">Document</span> document = <span class="keyword">new</span> <span class="type">Document</span>();
-    <span class="keyword">return</span> document;
+        <span class="comment">// TODO: Load your design mode data here.</span>
+        <span class="type">Document</span> document = <span class="keyword">new</span> <span class="type">Document</span>();
+        <span class="keyword">return</span> document;
     }
 }
 </pre>

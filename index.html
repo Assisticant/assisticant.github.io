@@ -95,33 +95,28 @@
 
   <span class="keyword">public string </span>First
   {
-    <span class="keyword">get </span>{ <span class="keyword">return </span>_first; }
+    <span class="keyword">get</span> =&gt; _first;
     <span class="keyword">set </span>
     {
       _first = <span class="keyword">value</span>;
-      RaisePropertyChanged(() => First);
-      RaisePropertyChanged(() => Full);
+      RaisePropertyChanged(() =&gt; First);
+      RaisePropertyChanged(() =&gt; Full);
     }
   }
 
   <span class="keyword">public string </span>Last
   {
-    <span class="keyword">get </span>{ <span class="keyword">return </span>_last; }
+    <span class="keyword">get</span> =&gt; _last;
     <span class="keyword">set </span>
     {
       _last = <span class="keyword">value</span>;
-      RaisePropertyChanged(() => Last);
-      RaisePropertyChanged(() => Full);
+      RaisePropertyChanged(() =&gt; Last);
+      RaisePropertyChanged(() =&gt; Full);
     }
   }
 
-  <span class="keyword">public string </span>Full
-  {
-    <span class="keyword">get</span>
-    {
-      <span class="keyword">return </span>First + <span class="string">&quot; &quot;</span> + Last;
-    }
-  }
+  <span class="keyword">public string </span>Full =&gt;
+    First + <span class="string">&quot; &quot;</span> + Last;
 }</pre>
         </div>
     </div>
@@ -137,23 +132,18 @@
 
   <span class="keyword">public string </span>First
   {
-    <span class="keyword">get </span>{ <span class="keyword">return </span>_first; }
-    <span class="keyword">set </span>{ _first.Value = <span class="keyword">value</span>; }
+    <span class="keyword">get</span> =&gt; _first.Value;
+    <span class="keyword">set</span> =&gt; _first.Value = <span class="keyword">value</span>;
   }
 
   <span class="keyword">public string </span>Last
   {
-    <span class="keyword">get </span>{ <span class="keyword">return </span>_last; }
-    <span class="keyword">set </span>{ _last.Value = <span class="keyword">value</span>; }
+    <span class="keyword">get</span> =&gt; _last.Value;
+    <span class="keyword">set</span> =&gt; _last.Value = <span class="keyword">value</span>;
   }
 
-  <span class="keyword">public string </span>Full
-  {
-    <span class="keyword">get</span>
-    {
-      <span class="keyword">return </span>First + <span class="string">&quot; &quot;</span> + Last;
-    }
-  }
+  <span class="keyword">public string </span>Full =&gt;
+    First + <span class="string">&quot; &quot;</span> + Last;
 }</pre>
         </div>
     </div>
@@ -183,7 +173,7 @@
 
   <span class="keyword">public string </span>First
   {
-    <span class="keyword">get </span>{ <span class="keyword">return </span>_first; }
+    <span class="keyword">get</span> =&gt; _first;
     <span class="keyword">set
     </span>{
       _first = <span class="keyword">value</span>;
@@ -193,7 +183,7 @@
 
   <span class="keyword">public string </span>Last
   {
-    <span class="keyword">get </span>{ <span class="keyword">return </span>_last; }
+    <span class="keyword">get</span> =&gt; _last;
     <span class="keyword">set
     </span>{
       _last = <span class="keyword">value</span>;
@@ -216,14 +206,14 @@
 
   <span class="keyword">public string </span>First
   {
-    <span class="keyword">get </span>{ <span class="keyword">return </span>_first; }
-    <span class="keyword">set </span>{ _first.Value = <span class="keyword">value</span>; }
+    <span class="keyword">get</span> =&gt; _first.Value;
+    <span class="keyword">set</span> =&gt; _first.Value = <span class="keyword">value</span>;
   }
 
   <span class="keyword">public string </span>Last
   {
-    <span class="keyword">get </span>{ <span class="keyword">return </span>_last; }
-    <span class="keyword">set </span>{ _last.Value = <span class="keyword">value</span>; }
+    <span class="keyword">get</span> =&gt; _last.Value;
+    <span class="keyword">set</span> =&gt; _last.Value = <span class="keyword">value</span>;
   }
 }
 </pre>
@@ -261,23 +251,17 @@
 
   <span class="keyword">public string </span>First
   {
-    <span class="keyword">get </span>{ <span class="keyword">return </span>_person.First; }
-    <span class="keyword">set </span>{ _person.First = <span class="keyword">value</span>; }
+    <span class="keyword">get</span> =&gt; _person.First;
+    <span class="keyword">set</span> =&gt; _person.First = <span class="keyword">value</span>;
   }
 
   <span class="keyword">public string </span>Last
   {
-    <span class="keyword">get </span>{ <span class="keyword">return </span>_person.Last; }
-    <span class="keyword">set </span>{ _person.Last = <span class="keyword">value</span>; }
+    <span class="keyword">get</span> =&gt; _person.Last;
+    <span class="keyword">set</span> =&gt; _person.Last = <span class="keyword">value</span>;
   }
 
-  <span class="keyword">public string </span>Full
-  {
-    <span class="keyword">get
-    </span>{
-      <span class="keyword">return </span>_person.First + <span class="string">&quot; &quot;</span> + _person.Last;
-    }
-  }
+  <span class="keyword">public string </span>Full =&gt; _person.First + <span class="string">&quot; &quot;</span> + _person.Last;
 }
 </pre>
         </div>
@@ -295,23 +279,17 @@
 
   <span class="keyword">public string </span>First
   {
-    <span class="keyword">get </span>{ <span class="keyword">return </span>_person.First; }
-    <span class="keyword">set </span>{ _person.First = <span class="keyword">value</span>; }
+    <span class="keyword">get</span> =&gt; _person.First;
+    <span class="keyword">set</span> =&gt; _person.First = <span class="keyword">value</span>;
   }
 
   <span class="keyword">public string </span>Last
   {
-    <span class="keyword">get </span>{ <span class="keyword">return </span>_person.Last; }
-    <span class="keyword">set </span>{ _person.Last = <span class="keyword">value</span>; }
+    <span class="keyword">get</span> =&gt; _person.Last;
+    <span class="keyword">set</span> =&gt; _person.Last = <span class="keyword">value</span>;
   }
 
-  <span class="keyword">public string </span>Full
-  {
-    <span class="keyword">get
-    </span>{
-      <span class="keyword">return </span>_person.First + <span class="string">&quot; &quot;</span> + _person.Last;
-    }
-  }
+  <span class="keyword">public string </span>Full =&gt; _person.First + <span class="string">&quot; &quot;</span> + _person.Last;
 }
 </pre>
         </div>
@@ -355,14 +333,11 @@
       .ToList();
   }
 
-  <span class="keyword">public</span> <span class="type">IEnumerable</span>&lt;<span class="type">PersonViewModel</span>&gt; People
-  {
-    <span class="keyword">get</span> { <span class="keyword">return</span> _people; }
-  }
+  <span class="keyword">public</span> <span class="type">IEnumerable</span>&lt;<span class="type">PersonViewModel</span>&gt; People =&gt; _people;
 
   <span class="keyword">public</span> <span class="type">PersonViewModel</span> SelectedPerson
   {
-    <span class="keyword">get</span> { <span class="keyword">return</span> _selectedPerson; }
+    <span class="keyword">get</span> =&gt; _selectedPerson;
     <span class="keyword">set</span>
     {
       <span class="keyword">if</span> (_selectedPerson == value)
@@ -406,24 +381,15 @@
       .ToList();
   }
 
-  <span class="keyword">public</span> <span class="type">IEnumerable</span>&lt;<span class="type">PersonViewModel</span>&gt; People
-  {
-    <span class="keyword">get</span> { <span class="keyword">return</span> _people; }
-  }
+  <span class="keyword">public</span> <span class="type">IEnumerable</span>&lt;<span class="type">PersonViewModel</span>&gt; People =&gt; _people;
 
   <span class="keyword">public</span> <span class="type">PersonViewModel</span> SelectedPerson
   {
-    <span class="keyword">get</span>
-    {
-      <span class="keyword">return</span> _people.FirstOrDefault(p =&gt;
-        p.Person == _personSelection.SelectedPerson);
-    }
-    <span class="keyword">set</span>
-    {
-      _personSelection.SelectedPerson = <span class="keyword">value</span> == <span class="keyword">null</span>
-        ? <span class="keyword">null</span>
-        : <span class="keyword">value</span>.Person;
-    }
+    <span class="keyword">get</span> =&gt; _people.FirstOrDefault(p =&gt;
+      p.Person == _personSelection.SelectedPerson);
+    <span class="keyword">set</span> =&gt; _personSelection.SelectedPerson = <span class="keyword">value</span> == <span class="keyword">null</span>
+      ? <span class="keyword">null</span>
+      : <span class="keyword">value</span>.Person;
   }
 }
 </pre>
@@ -456,7 +422,7 @@
 
   <span class="keyword">public</span> <span class="keyword">string</span> First
   {
-    <span class="keyword">get</span> { <span class="keyword">return</span> _first; }
+    <span class="keyword">get</span> =&gt; _first;
     <span class="keyword">set</span>
     {
       <span class="keyword">if</span> (<span class="keyword">value</span> == _first)
@@ -476,7 +442,7 @@
 
   <span class="keyword">public</span> <span class="keyword">string</span> Last
   {
-    <span class="keyword">get</span> { <span class="keyword">return</span> _last; }
+    <span class="keyword">get</span> =&gt; _last;
     <span class="keyword">set</span>
     {
       <span class="keyword">if</span> (<span class="keyword">value</span> == _last)
@@ -513,38 +479,16 @@
 
   <span class="keyword">public</span> <span class="keyword">string</span> First
   {
-    <span class="keyword">get</span>
-    {
-      <span class="keyword">if</span> (_personSelection.SelectedPerson == <span class="keyword">null</span>)
-        <span class="keyword">return</span> <span class="keyword">null</span>;
-
-      <span class="keyword">return</span> _personSelection.SelectedPerson.First;
-    }
-    <span class="keyword">set</span>
-    {
-      <span class="keyword">if</span> (_personSelection.SelectedPerson == <span class="keyword">null</span>)
-        <span class="keyword">return</span>;
-
+    <span class="keyword">get</span> =&gt; _personSelection.SelectedPerson?.First;
+    <span class="keyword">set</span> =&gt; <span class="keyword">if</span> (_personSelection.SelectedPerson != <span class="keyword">null</span>)
       _personSelection.SelectedPerson.First = <span class="keyword">value</span>;
-    }
   }
 
   <span class="keyword">public</span> <span class="keyword">string</span> Last
   {
-    <span class="keyword">get</span>
-    {
-      <span class="keyword">if</span> (_personSelection.SelectedPerson == <span class="keyword">null</span>)
-        <span class="keyword">return</span> <span class="keyword">null</span>;
-
-      <span class="keyword">return</span> _personSelection.SelectedPerson.Last;
-    }
-    <span class="keyword">set</span>
-    {
-      <span class="keyword">if</span> (_personSelection.SelectedPerson == <span class="keyword">null</span>)
-        <span class="keyword">return</span>;
-
+    <span class="keyword">get</span> =&gt; _personSelection.SelectedPerson?.Last;
+    <span class="keyword">set</span> =&gt; <span class="keyword">if</span> (_personSelection.SelectedPerson != <span class="keyword">null</span>)
       _personSelection.SelectedPerson.Last = <span class="keyword">value</span>;
-    }
   }
 }
 </pre>
@@ -556,8 +500,8 @@
 
   <span class="keyword">public</span> <span class="type">PersonModel</span> SelectedPerson
   {
-    <span class="keyword">get</span> { <span class="keyword">return</span> _selectedPerson; }
-    <span class="keyword">set</span> { _selectedPerson.Value = <span class="keyword">value</span>; }
+    <span class="keyword">get</span> =&gt; _selectedPerson.Value;
+    <span class="keyword">set</span> =&gt; _selectedPerson.Value = <span class="keyword">value</span>;
   }
 }
 </pre>
