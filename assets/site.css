@@ -29,7 +29,7 @@ header .navbar{
 .logo {
     width: 131px;
     height: 389px;
-    background-image: url('../images/Logo.png');
+    background-image: url('Logo.png');
     display: inline-block;
 }
 .keyword {
@@ -50,6 +50,32 @@ header .navbar{
 .attribute {
     color: red;
 }
+
+.highlight .k {
+    color: blue;
+}
+.highlight .kt {
+    color: blue;
+}
+.highlight .nc {
+    color: #2b91af;
+}
+.highlight .s {
+    color: #a31515;
+}
+.highlight .c {
+    color: green;
+}
+.highlight .c1 {
+    color: green;
+}
+.highlight .nt {
+    color: blue;
+}
+.highlight .na {
+    color: red;
+}
+
 .nuget-badge code {
     background-color: #000000;
     border: 4px solid rgb(12, 134, 12);
