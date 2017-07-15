@@ -14,9 +14,12 @@
 
 			<div class="collapse navbar-collapse" id="navbar">
 				<ul class="nav navbar-nav col-md-9">
-					<li class="active"><a href="{{ "/#home" | relative_url }}">Home</a></li>
-					<li><a href="{{ "/documentation.html" | relative_url }}">Documentation</a></li>
-					<li><a href="{{ "/validation.html" | relative_url }}">Validation</a></li>
+					{% assign sorted_pages = site.pages | sort:"order" %}
+					{% for my_page in sorted_pages %}
+						{% if my_page.title and my_page.order > 0 %}
+						<li {% if my_page.name == page.name %}class="active"{% endif %}><a href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></li>
+						{% endif %}
+					{% endfor %}
 					<li><a href="https://github.com/assisticant">Examples</a></li>
 					<li><a href="https://github.com/michaellperry/assisticant/issues">Issues</a></li>
 					<li><a href="https://groups.google.com/forum/#!forum/assisticant">Contact</a></li>

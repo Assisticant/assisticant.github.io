@@ -1,6 +1,7 @@
 ---
 title: Documentation
 layout: doc
+order: 2
 ---
 ## Observable&lt;T&gt;
 
