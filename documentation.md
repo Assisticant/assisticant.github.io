@@ -154,20 +154,17 @@ public class ItemHeader
     {
         if (obj == this)
             return true;
-        ItemHeader that = obj as ItemHeader;
+        var that = obj as ItemHeader;
         if (that == null)
             return false;
         return Object.Equals(this._item, that._item);
     }
 
-    public override int GetHashCode()
-    {
-        return _item.GetHashCode();
-    }
+    public override int GetHashCode() => _item.GetHashCode();
 }
 ```
 
-A header always has to implement Equals and GetHashCode. These methods should compare two headers to see if they represent the same object. This allows Assisticant to preserve the selection and scroll position of a list even as the items in the list are changing. It also assists with binding the SelectedItem property. The SelectedItem should be equal to one element in the ItemsSource.
+A header always has to implement [Equals and GetHashCode](collections.html#equals-and-gethashcode). These methods should compare two headers to see if they represent the same object. This allows Assisticant to preserve the selection and scroll position of a list even as the items in the list are changing. It also assists with binding the SelectedItem property. The SelectedItem should be equal to one element in the ItemsSource.
 
 ## ViewModelLocatorBase
 
